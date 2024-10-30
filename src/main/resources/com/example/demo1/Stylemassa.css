@@ -1,0 +1,20 @@
+#exitBtn,.btn {
+    -fx-text-fill: #a9afe5;
+    -fx-background-color: #484469;
+    -fx-border-radius: 1%;
+    -fx-border-width: 1px;
+    -fx-border-color: #a9afe5;
+}
+#exitBtn:hover, .btn:hover {
+    -fx-background-color: #403e5e;
+    -fx-border-radius: 2%;
+}
+
+.radioBtn {
+    -fx-background-color: #48465e;
+    -fx-border-radius: 0;
+}
+.radioBtn:selected {
+    -fx-background-color: #282738;
+    -fx-border-radius: 1;
+}

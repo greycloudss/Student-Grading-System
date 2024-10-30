@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="1003.0" style="-fx-background-color: #3f3d54" stylesheets="@Stylemassa.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController">
+    <HBox prefHeight="100.0" prefWidth="1003.0" style="-fx-background-color: #343249">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Diary" wrappingWidth="228.13671875">
+            <font>
+                <Font name="Eras Light ITC" size="41.0" />
+            </font>
+            <HBox.margin>
+                <Insets left="20.0" top="10.0" />
+            </HBox.margin>
+        </Text>
+        <Pane prefHeight="100.0" prefWidth="781.0">
+            <Button fx:id="exitBtn" layoutX="693.0" mnemonicParsing="false" onAction="#onExitBTN" text="    Exit    " textAlignment="RIGHT" textFill="WHITE" />
+        </Pane>
+    </HBox>
+
+    <ComboBox fx:id="SortSel" layoutX="29.0" layoutY="100.0" onAction="#cb_filter" prefWidth="150.0" promptText="Sorting" />
+    <ComboBox fx:id="GroupSel" layoutX="217.0" layoutY="100.0" prefWidth="150.0" promptText="Groups" />
+    <ComboBox fx:id="DateSel" layoutX="409.0" layoutY="100.0" prefWidth="150.0" promptText="Month" />
+    <ComboBox fx:id="howSel" layoutX="29.0" layoutY="139.0" prefWidth="150.0" promptText="Order" visible="false" />
+
+      
+    <CheckBox fx:id="grFilter" layoutX="568.0" layoutY="104.0" mnemonicParsing="false" onAction="#cb_listener" text="Grade filtering" textFill="WHITE">
+        <font>
+            <Font name="Eras Demi ITC" size="12.0" />
+        </font>
+    </CheckBox>
+
+      
+    <TextField fx:id="frmGrade" layoutX="714.0" layoutY="100.0" prefHeight="25.0" prefWidth="46.0" />
+    <TextField fx:id="toGrade" layoutX="789.0" layoutY="100.0" prefHeight="25.0" prefWidth="46.0" />
+    <Text fill="WHITE" layoutX="682.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From:">
+        <font>
+            <Font name="Eras Medium ITC" size="12.0" />
+        </font>
+    </Text>
+    <Text fill="WHITE" layoutX="769.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To:" wrappingWidth="19.919921875">
+        <font>
+            <Font name="Eras Medium ITC" size="12.0" />
+        </font>
+    </Text>
+    <TableView fx:id="table" layoutX="29.0" layoutY="175.0" prefHeight="469.0" prefWidth="822.0">
+        <columns>
+            <TableColumn prefWidth="120.0" text="Student ID" />
+            <TableColumn prefWidth="120.0" text="Name" />
+        </columns>
+    </TableView>
+    <Button fx:id="exportBtn" layoutX="859.0" layoutY="606.0" mnemonicParsing="false" onAction="#onExportBtn" prefHeight="38.0" prefWidth="140.0" styleClass="btn" text="Export" textFill="WHITE" />
+    <RadioButton fx:id="CSVile" layoutX="955.0" layoutY="552.0" mnemonicParsing="false" styleClass="radioBtn" text="CSV" textFill="WHITE" onAction="#handleRadioBtnCSV">
+      <font>
+         <Font name="Eras Demi ITC" size="12.0" />
+      </font>
+   </RadioButton>
+    <RadioButton fx:id="PDFile" layoutX="955.0" layoutY="535.0" mnemonicParsing="false" selected="true" styleClass="radioBtn" text="PDF" textFill="WHITE" onAction="#handleRadioBtnPDF">
+      <font>
+         <Font name="Eras Demi ITC" size="12.0" />
+      </font>
+   </RadioButton>
+    <Text fill="WHITE" layoutX="29.0" layoutY="656.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fueled by caffeine, insomnia, nicotine and pure unbridled rage 😍" wrappingWidth="822.0">
+        <font>
+            <Font name="Eras Medium ITC" size="12.0" />
+        </font>
+    </Text>
+   <Button fx:id="searchButton" layoutX="859.0" layoutY="101.0" mnemonicParsing="false" onAction="#exactSearch" prefHeight="38.0" prefWidth="140.0" styleClass="btn" text="Search" textFill="WHITE" />
+   <Button fx:id="exportBtn1" layoutX="859.0" layoutY="574.0" mnemonicParsing="false" onAction="#onExportBtn" prefHeight="25.0" prefWidth="140.0" styleClass="btn" text="Choose file" textFill="WHITE" />
+
+</AnchorPane>
