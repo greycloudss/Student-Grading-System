@@ -5,7 +5,6 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,6 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.TableColumn?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="1003.0" style="-fx-background-color: #3f3d54" stylesheets="@Stylemassa.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController">
     <HBox prefHeight="100.0" prefWidth="1003.0" style="-fx-background-color: #343249">
         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Diary" wrappingWidth="228.13671875">
@@ -25,13 +25,13 @@
             </HBox.margin>
         </Text>
         <Pane prefHeight="100.0" prefWidth="781.0">
-            <Button fx:id="exitBtn" layoutX="693.0" mnemonicParsing="false" onAction="#onExitBTN" text="    Exit    " textAlignment="RIGHT" textFill="WHITE" />
+            <Button fx:id="exitBtn" layoutX="688.0" mnemonicParsing="false" onAction="#onExitBTN" text="    Exit    " textAlignment="RIGHT" textFill="WHITE" />
         </Pane>
     </HBox>
 
     <ComboBox fx:id="SortSel" layoutX="29.0" layoutY="100.0" onAction="#cb_filter" prefWidth="150.0" promptText="Sorting" />
     <ComboBox fx:id="GroupSel" layoutX="217.0" layoutY="100.0" prefWidth="150.0" promptText="Groups" />
-    <ComboBox fx:id="DateSel" layoutX="409.0" layoutY="100.0" prefWidth="150.0" promptText="Month" />
+    <ComboBox fx:id="DateSel" layoutX="409.0" layoutY="100.0" prefWidth="150.0" onMouseClicked="#updateMonths" promptText="Month" />
     <ComboBox fx:id="howSel" layoutX="29.0" layoutY="139.0" prefWidth="150.0" promptText="Order" visible="false" />
 
       
@@ -56,17 +56,20 @@
     </Text>
     <TableView fx:id="table" layoutX="29.0" layoutY="175.0" prefHeight="469.0" prefWidth="822.0">
         <columns>
-            <TableColumn prefWidth="120.0" text="Student ID" />
-            <TableColumn prefWidth="120.0" text="Name" />
+            <TableColumn fx:id="studentIDCol" text="Student ID" />
+            <TableColumn fx:id="firstNameCol" text="First Name" />
+            <TableColumn fx:id="lastNameCol" text="Last Name" />
+            <TableColumn fx:id="groupCol" text="Group" />
         </columns>
     </TableView>
+
     <Button fx:id="exportBtn" layoutX="859.0" layoutY="606.0" mnemonicParsing="false" onAction="#onExportBtn" prefHeight="38.0" prefWidth="140.0" styleClass="btn" text="Export" textFill="WHITE" />
-    <RadioButton fx:id="CSVile" layoutX="955.0" layoutY="552.0" mnemonicParsing="false" styleClass="radioBtn" text="CSV" textFill="WHITE" onAction="#handleRadioBtnCSV">
+    <RadioButton fx:id="CSVile" layoutX="955.0" layoutY="552.0" mnemonicParsing="false" onAction="#handleRadioBtnCSV" styleClass="radioBtn" text="CSV" textFill="WHITE">
       <font>
          <Font name="Eras Demi ITC" size="12.0" />
       </font>
    </RadioButton>
-    <RadioButton fx:id="PDFile" layoutX="955.0" layoutY="535.0" mnemonicParsing="false" selected="true" styleClass="radioBtn" text="PDF" textFill="WHITE" onAction="#handleRadioBtnPDF">
+    <RadioButton fx:id="PDFile" layoutX="955.0" layoutY="535.0" mnemonicParsing="false" onAction="#handleRadioBtnPDF" selected="true" styleClass="radioBtn" text="PDF" textFill="WHITE">
       <font>
          <Font name="Eras Demi ITC" size="12.0" />
       </font>
@@ -77,6 +80,6 @@
         </font>
     </Text>
    <Button fx:id="searchButton" layoutX="859.0" layoutY="101.0" mnemonicParsing="false" onAction="#exactSearch" prefHeight="38.0" prefWidth="140.0" styleClass="btn" text="Search" textFill="WHITE" />
-   <Button fx:id="exportBtn1" layoutX="859.0" layoutY="574.0" mnemonicParsing="false" onAction="#onExportBtn" prefHeight="25.0" prefWidth="140.0" styleClass="btn" text="Choose file" textFill="WHITE" />
+   <Button fx:id="chooseFileBtn" layoutX="859.0" layoutY="574.0" mnemonicParsing="false" onAction="#onExportBtn" prefHeight="25.0" prefWidth="140.0" styleClass="btn" text="Choose file" textFill="WHITE" />
 
 </AnchorPane>
