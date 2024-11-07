@@ -5,6 +5,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,7 +14,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.TableColumn?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="1003.0" style="-fx-background-color: #3f3d54" stylesheets="@Stylemassa.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController">
     <HBox prefHeight="100.0" prefWidth="1003.0" style="-fx-background-color: #343249">
         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Diary" wrappingWidth="228.13671875">
@@ -31,7 +31,7 @@
 
     <ComboBox fx:id="SortSel" layoutX="29.0" layoutY="100.0" onAction="#cb_filter" prefWidth="150.0" promptText="Sorting" />
     <ComboBox fx:id="GroupSel" layoutX="217.0" layoutY="100.0" prefWidth="150.0" promptText="Groups" />
-    <ComboBox fx:id="DateSel" layoutX="409.0" layoutY="100.0" prefWidth="150.0" onMouseClicked="#updateMonths" promptText="Month" />
+    <ComboBox fx:id="DateSel" layoutX="409.0" layoutY="100.0" onMouseClicked="#updateMonths" prefWidth="150.0" promptText="Month" />
     <ComboBox fx:id="howSel" layoutX="29.0" layoutY="139.0" prefWidth="150.0" promptText="Order" visible="false" />
 
       
@@ -81,5 +81,40 @@
     </Text>
    <Button fx:id="searchButton" layoutX="859.0" layoutY="101.0" mnemonicParsing="false" onAction="#exactSearch" prefHeight="38.0" prefWidth="140.0" styleClass="btn" text="Search" textFill="WHITE" />
    <Button fx:id="chooseFileBtn" layoutX="859.0" layoutY="574.0" mnemonicParsing="false" onAction="#onExportBtn" prefHeight="25.0" prefWidth="140.0" styleClass="btn" text="Choose file" textFill="WHITE" />
-
+   <CheckBox fx:id="AP_CB" layoutX="859.0" layoutY="175.0" mnemonicParsing="false" onAction="#AP_listener" text="Admin Panel" textFill="WHITE">
+      <font>
+         <Font name="Eras Demi ITC" size="12.0" />
+      </font>
+   </CheckBox>
+   <TextField fx:id="AP_SID" layoutX="859.0" layoutY="214.0" prefHeight="25.0" prefWidth="140.0" />
+   <TextField fx:id="AP_GP" layoutX="859.0" layoutY="260.0" prefHeight="25.0" prefWidth="140.0" />
+   <TextField fx:id="AP_D" layoutX="859.0" layoutY="308.0" prefHeight="25.0" prefWidth="140.0" />
+   <TextField fx:id="AP_GR" layoutX="859.0" layoutY="355.0" prefHeight="25.0" prefWidth="140.0" />
+    <TextField fx:id="AP_AT" layoutX="859.0" layoutY="404.0" prefHeight="25.0" prefWidth="140.0" />
+   <Text fx:id="AP_SID_T" fill="WHITE" layoutX="859.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID">
+      <font>
+         <Font name="Eras Demi ITC" size="12.0" />
+      </font>
+   </Text>
+   <Text fx:id="AP_GP_T" fill="WHITE" layoutX="859.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group">
+      <font>
+         <Font name="Eras Demi ITC" size="12.0" />
+      </font>
+   </Text>
+   <Text fx:id="AP_D_T" fill="WHITE" layoutX="859.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Day">
+      <font>
+         <Font name="Eras Demi ITC" size="12.0" />
+      </font>
+   </Text>
+   <Text fx:id="AP_GR_T" fill="WHITE" layoutX="859.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grade">
+      <font>
+         <Font name="Eras Demi ITC" size="12.0" />
+      </font>
+   </Text>
+   <Text fx:id="AP_AT_T" fill="WHITE" layoutX="859.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attendance">
+      <font>
+         <Font name="Eras Demi ITC" size="12.0" />
+      </font>
+   </Text>
+   <Button fx:id="AP_BTN" layoutX="859.0" layoutY="437.0" mnemonicParsing="false" onAction="#AP_ExactChange" prefHeight="27.0" prefWidth="140.0" styleClass="btn" text="Exact change" textFill="WHITE" />
 </AnchorPane>

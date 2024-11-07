@@ -1,47 +1,42 @@
 package com.example.demo1.Exporter;
 
+import com.example.demo1.Exporter.Export.Export;
 import com.example.demo1.Student;
-import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Table;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 import java.io.FileNotFoundException;
-import java.util.List;
 
-public abstract class ExportPDF implements Export {
-    protected List<Student> students;
-
-    public ExportPDF(List<Student> students) {
-        this.students = students;
-    }
+public class ExportPDF implements Export {
 
     @Override
-    public void export(String fileName) {
-        exportToPDF(fileName);
-    }
-
-    public void exportToPDF(String filePath) {
+    public void export(TableView<Student> table, String file) {
         try {
-            PdfWriter writer = new PdfWriter(filePath);
+            PdfWriter writer = new PdfWriter(file);
             PdfDocument pdf = new PdfDocument(writer);
             Document document = new Document(pdf);
 
-            Table table = new Table(4);
-            table.addCell("Student ID");
-            table.addCell("First Name");
-            table.addCell("Last Name");
-            table.addCell("Group");
+            Table pdfTable = new Table(table.getColumns().size());
 
-            for (Student student : students) {
-                table.addCell(student.getStudentId());
-                table.addCell(student.getFirstName());
-                table.addCell(student.getLastName());
-                table.addCell(student.group());
+            for (TableColumn<Student, ?> column : table.getColumns()) {
+                pdfTable.addCell(column.getText());
             }
 
-            document.add(table);
+            for (Student student : table.getItems()) {
+                for (TableColumn<Student, ?> column : table.getColumns()) {
+                    Object cellData = column.getCellData(student);
+                    pdfTable.addCell(cellData == null ? "" : cellData.toString());
+                }
+            }
+
+            document.add(pdfTable);
             document.close();
-        } catch (FileNotFoundException ignored) {}
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

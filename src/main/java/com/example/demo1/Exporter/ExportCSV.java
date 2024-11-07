@@ -1,33 +1,31 @@
 package com.example.demo1.Exporter;
+import com.example.demo1.Exporter.Export.Export;
 import com.example.demo1.Student;
-
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
 
-public abstract class ExportCSV implements Export {
-    protected List<Student> students;
-
-    public ExportCSV(List<Student> students) {
-        this.students = students;
-    }
+public class ExportCSV implements Export {
 
     @Override
-    public void export(String fileName) {
-        exportToCSV(fileName);
-    }
-
-    public void exportToCSV(String filePath) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            writer.write("Student ID,First Name,Last Name,Group\n");
-
-            for (Student student : students) {
-                writer.write(student.getStudentId() + "," +
-                        student.getFirstName() + "," +
-                        student.getLastName() + "," +
-                        student.group() + "\n");
+    public void export(TableView<Student> table, String file) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            for (TableColumn<Student, ?> column : table.getColumns()) {
+                writer.write(column.getText() + ",");
             }
-        } catch (IOException ignored) {}
+            writer.newLine();
+
+            for (Student student : table.getItems()) {
+                for (TableColumn<Student, ?> column : table.getColumns()) {
+                    Object cellData = column.getCellData(student);
+                    writer.write((cellData == null ? "" : cellData.toString()) + ",");
+                }
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
